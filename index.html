@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    
+    <div id="search-bar" style="margin: 20px; text-align: center; position: relative;">
+        <input type="text" id="search-input" placeholder="Search for an anime..." style="padding: 5px; width: 200px;">
+        <button id="search-button" style="padding: 5px 10px;">Search</button>
+        <ul id="autocomplete-list" 
+            style="list-style: none; 
+                   padding: 0; 
+                   margin: 0; 
+                   position: absolute; 
+                   top: 40px; /* Adjust based on the height of your input */
+                   left: 0; 
+                   background: white; 
+                   width: 100%; 
+                   border: 1px solid #ddd; 
+                   max-height: 150px; 
+                   overflow-y: auto; 
+                   display: none; 
+                   z-index: 1000;"></ul>
+      </div>
+      
+
+    <div class="container" id = "anime-container"></div>
+    
+
+    
+    <div id="pagination-controls" style="text-align: center; margin: 20px;">
+        <button id="prev-page" disabled>&lt;</button>
+        <span id="page-numbers"></span>
+        <button id="next-page">&gt;</button>
+    </div>
+    
+    
+</body>
+<script src = "script.js"></script>
+</html>

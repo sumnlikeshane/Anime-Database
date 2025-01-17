@@ -1,0 +1,155 @@
+<style>
+    .anime-card {
+      border-radius: 0;
+      display: flex;
+      max-width: 341px;
+      flex-direction: column;
+      font-family: Instrument Sans, sans-serif;
+      color: #fff;
+      font-weight: 500;
+    }
+    
+    .card-container {
+      border-radius: 33px;
+      background-color: rgb(73, 77, 88);
+      box-shadow: 0 0 10px rgb(140, 163, 229);
+      display: flex;
+      gap: 9px;
+      padding: 21px 15px;
+    }
+    
+    .anime-poster {
+      aspect-ratio: 0.96;
+      object-fit: contain;
+      object-position: center;
+      width: 181px;
+      border-radius: 34px;
+      max-width: 100%;
+    }
+    
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .status-container {
+      display: flex;
+      gap: 40px 46px;
+    }
+    
+    .airing-status {
+      display: flex;
+      gap: 4px;
+      font-size: 9px;
+      white-space: nowrap;
+      flex: 1;
+    }
+    
+    .status-indicator {
+      background-color: rgb(57, 209, 7);
+      box-shadow: 0 0 7px rgba(149, 255, 0, 0.25);
+      border-radius: 50%;
+      display: flex;
+      width: 11px;
+      height: 11px;
+    }
+    
+    .age-rating {
+      font-size: 10px;
+    }
+    
+    .meta-info {
+      display: flex;
+      margin-top: 30px;
+      gap: 10px;
+      font-size: 9px;
+    }
+    
+    .release-date {
+      flex-grow: 1;
+    }
+    
+    .synopsis {
+      font-size: 8px;
+      margin-top: 8px;
+    }
+    
+    .rating-container {
+      align-self: start;
+      display: flex;
+      margin-top: 18px;
+      gap: 3px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    
+    .rating-star {
+      aspect-ratio: 1.07;
+      object-fit: contain;
+      object-position: center;
+      width: 15px;
+      align-self: start;
+    }
+    
+    .genre-tags {
+      display: flex;
+      margin-top: 24px;
+      gap: 5px;
+      font-size: 8px;
+      white-space: nowrap;
+    }
+    
+    .genre-tag {
+      border-radius: 7px;
+      background-color: rgb(49, 55, 73);
+      padding: 8px 6px;
+    }
+    
+    .more-genres {
+      border-radius: 7px;
+      background-color: rgb(49, 55, 73);
+      padding: 7px 6px;
+    }
+    </style>
+    
+    <div class="anime-card">
+      <div class="card-container">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f51ad42a7aebb896827329802bf07c9d877529fa3667d45deb47a54d0a8deeb9?placeholderIfAbsent=true&apiKey=789d7e2c59ea4dc0a8aff34a22c9c1d7"
+          class="anime-poster"
+          alt="Anime series poster"
+        />
+        <div class="content-wrapper">
+          <div class="status-container">
+            <div class="airing-status">
+              <div class="status-indicator" role="img" aria-label="Currently airing"></div>
+              <div>Airing</div>
+            </div>
+            <div class="age-rating">PG +13</div>
+          </div>
+          <div class="meta-info">
+            <div class="release-date">Summer 2024</div>
+            <div>24 episode</div>
+          </div>
+          <div class="synopsis">
+            vvjrenjvnrenvrnvnrjvjrnvnvnrjvrnevbherbfuebcyfuwi4ufihweufgwedjkbcjecjecjebcjebcjebc
+            weygafuwehbcfbhewufuecfubwecfcwfuwbcwewececfwe....
+          </div>
+          <div class="rating-container">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/d1cc995c53a548148feeb818816d5cbea0b6e7acab3a598481cf8cef84715449?placeholderIfAbsent=true&apiKey=789d7e2c59ea4dc0a8aff34a22c9c1d7"
+              class="rating-star"
+              alt="Rating star icon"
+            />
+            <div>7.6/10</div>
+          </div>
+          <div class="genre-tags">
+            <div class="genre-tag">Comedy</div>
+            <div class="genre-tag">Action</div>
+            <div class="more-genres">+3</div>
+          </div>
+        </div>
+      </div>
+    </div>
