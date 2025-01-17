@@ -1,0 +1,286 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 8px; /* Reduced left and right padding */
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 8px; /* Reduced padding for the container */
+    max-width: 100%; /* Ensures no overflow */
+    box-sizing: border-box; /* Maintain consistent padding behavior */
+  }
+  
+  .card {
+    background-color: rgba(73, 77, 88, 0.35);
+    border-radius: 12px;
+    padding: 8px;
+    width: 341px;
+    height: 229px;
+    color: white;
+    display: flex;
+    gap: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(119, 176, 192, 0.319);
+    position: relative;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .image-container {
+    flex: 0 0 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card-subtitle {
+    font-size: 12px;
+    color: #8E8E8E;
+    margin-bottom: 8px;
+  }
+  
+  .card-description {
+    color: #757575;
+    font-size: 12px;
+    line-height: 1.4;
+    max-height: 50px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    width: 175px;
+  }
+  
+  .card-rating {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: #B4B4B4;
+    min-width: 120px;
+  }
+  
+  .star {
+    color: #FFC107;
+  }
+  
+  .rating-value {
+    flex-grow: 1;
+  }
+  
+  .card-rating .star {
+    margin-right: 4px;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
+    margin-top: 8px;
+    max-width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+  
+  .tag {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #B4B4B4;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 3px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .status-indicator.green {
+    background-color: rgb(1, 255, 1);
+    box-shadow: 0 0 8px rgb(2, 255, 2);
+  }
+  
+  .status-indicator.grey {
+    background-color: grey;
+    box-shadow: 0 0 8px grey;
+  }
+  
+  .status-indicator.golden {
+    background-color: gold;
+    box-shadow: 0 0 8px gold;
+  }
+  
+  #pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px); /* Glass effect */
+  }
+  
+  #pagination-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(62, 169, 199, 0.5);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #pagination-controls button:hover {
+    background-color: rgba(62, 169, 199, 0.7);
+    box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
+  }
+  
+  #pagination-controls .page-number {
+    padding: 10px 15px;
+    border-radius: 50%;
+    background-color: rgba(62, 169, 199, 0.5);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #pagination-controls .page-number:hover {
+    background-color: rgba(62, 169, 199, 0.7);
+    box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
+  }
+  
+  #pagination-controls .page-number.active {
+    background-color: rgba(62, 169, 199, 0.9);
+    box-shadow: 0 0 15px rgba(62, 169, 199, 0.7);
+  }
+  
+  #search-bar {
+    margin: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Make the search bar wider */
+    max-width: 600px; /* Set a maximum width */
+  }
+  
+  #search-input {
+    padding: 10px;
+    width: 100%; /* Make the input take the full width */
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(62, 169, 199, 0.319);
+    background-color: rgba(255, 255, 255, 0.9); /* Make the input opaque */
+    color: black; /* Change text color to black for better readability */
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  #search-input::placeholder {
+    color: #B4B4B4;
+  }
+  
+  #search-input:focus {
+    box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(62, 169, 199, 0.9); /* Make the button opaque */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #search-button:hover {
+    background-color: rgba(62, 169, 199, 1);
+    box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
+  }
+  
+  #autocomplete-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: calc(100% + 5px); /* Position below the search bar with a small gap */
+    left: 0;
+    background: rgba(255, 255, 255, 0.9); /* Make the list opaque */
+    width: 100%;
+    border: 1px solid #ddd;
+    max-height: 200px; /* Increased max-height for better visibility */
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 10px rgba(62, 169, 199, 0.319);
+  }
+  
+  #autocomplete-list li {
+    padding: 10px;
+    cursor: pointer;
+    color: black; /* Change text color to black for better readability */
+    border-bottom: 1px solid rgba(62, 169, 199, 0.2); /* Subtle border for separation */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  #autocomplete-list li:hover {
+    background-color: rgba(62, 169, 199, 0.5);
+  }
