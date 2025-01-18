@@ -4,6 +4,7 @@ const nextButton = document.getElementById("next-page");
 const pageNumbersContainer = document.getElementById("page-numbers");
 const searchInput = document.getElementById("search-input");
 const autocompleteList = document.getElementById("autocomplete-list");
+const sortOptions = document.getElementById('sort-options');
 
 let currentPage = 1;
 let totalPages = 100;
@@ -81,9 +82,26 @@ function displayAnime(animeList) {
       </div>
     `;
 
+    
+
     container.appendChild(card);
   });
 }
+
+// Example: Assuming you have a function that creates the title cards
+function createAnimeCard(anime) {
+  const card = document.createElement('div');
+  card.classList.add('anime-card');
+  card.innerHTML = `
+      <img src="${anime.image_url}" alt="${anime.title}">
+      <h3>${anime.title}</h3>
+  `;
+  card.addEventListener('click', () => openModal(anime.mal_id)); // Assuming mal_id is the unique ID for each anime
+
+  // Append to the container (example)
+  document.getElementById('anime-container').appendChild(card);
+}
+
 
 // Update pagination controls dynamically
 function updatePaginationControls() {
@@ -135,6 +153,8 @@ function updatePaginationControls() {
   });
 }
 
+
+
 function addPageButton(pageNumber) {
   const pageButton = document.createElement("button");
   pageButton.textContent = pageNumber;
@@ -171,43 +191,39 @@ searchInput.addEventListener("keypress", (event) => {
   }
 });
 
-// Fetch suggestions as the user types
+
 function fetchSuggestions(query) {
   if (!query) {
-    autocompleteList.style.display = "none"; // Hide the list if the query is empty
-    return;
+      autocompleteList.style.display = "none"; // Hide the list if the query is empty
+      return;
   }
 
   fetch(`https://api.jikan.moe/v4/anime?q=${query}&limit=10`)
-    .then((response) => response.json())
-    .then((data) => {
-      const suggestions = data.data.map((anime) => anime.title);
-      showSuggestions(suggestions);
-    })
-    .catch((error) => console.error("Error fetching suggestions:", error));
+      .then((response) => response.json())
+      .then((data) => {
+          const suggestions = data.data.map((anime) => anime.title);
+          showSuggestions(suggestions);
+      })
+      .catch((error) => console.error("Error fetching suggestions:", error));
 }
 
 // Show the autocomplete suggestions
 function showSuggestions(suggestions) {
   autocompleteList.innerHTML = ""; // Clear existing suggestions
-  autocompleteList.style.display = suggestions.length ? "block" : "none";
+  autocompleteList.style.display = suggestions.length ? "block" : "none"; // Show if suggestions exist
 
   suggestions.forEach((suggestion) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = suggestion;
-    listItem.style.padding = "10px";
-    listItem.style.cursor = "pointer";
-    listItem.style.borderBottom = "1px solid rgba(62, 169, 199, 0.2)";
+      const listItem = document.createElement("li");
+      listItem.textContent = suggestion;
 
+      // Populate search bar and trigger search on click
+      listItem.addEventListener("click", () => {
+          searchInput.value = suggestion; // Set the search input
+          autocompleteList.style.display = "none"; // Hide the suggestions
+          searchAnime(suggestion); // Perform the search
+      });
 
-    // Populate search bar and trigger search on click
-    listItem.addEventListener("click", () => {
-      searchInput.value = suggestion; // Set the search input
-      autocompleteList.style.display = "none"; // Hide the suggestions
-      searchAnime(suggestion); // Perform the search
-    });
-
-    autocompleteList.appendChild(listItem);
+      autocompleteList.appendChild(listItem);
   });
 }
 
@@ -220,9 +236,23 @@ searchInput.addEventListener("input", () => {
 // Hide autocomplete when clicking outside
 document.addEventListener("click", (event) => {
   if (!event.target.closest("#search-bar")) {
-    autocompleteList.style.display = "none";
+      autocompleteList.style.display = "none";
   }
 });
 
+const sortAnime = (animeList, criteria) => {
+  switch (criteria) {
+      case 'popularity':
+          return animeList.sort((a, b) => a.popularity - b.popularity);
+      case 'rating':
+          return animeList.sort((a, b) => b.rating - a.rating);
+      case 'title':
+          return animeList.sort((a, b) => a.title.localeCompare(b.title));
+      default:
+          return animeList;
+  }
+};
+
 // Initial fetch
 fetchAnime(currentPage);
+

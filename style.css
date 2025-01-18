@@ -189,6 +189,7 @@ body {
   
   #pagination-controls .page-number {
     padding: 10px 15px;
+    margin: 3px;
     border-radius: 50%;
     background-color: (94, 128, 138, 0.5);
     color: white;
@@ -198,12 +199,10 @@ body {
   
   #pagination-controls .page-number:hover {
     background-color: rgba(62, 169, 199, 0.7);
-    box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
   }
   
   #pagination-controls .page-number.active {
     background-color: rgba(62, 169, 199, 0.9);
-    box-shadow: 0 0 15px rgba(62, 169, 199, 0.7);
   }
   
  
@@ -226,7 +225,7 @@ body {
     border-radius: 16px;
     outline: none;
     background-color: rgba(167, 214, 227, 0.15);
-    color: #2C3E50;
+    color: #95A5A6;
     font-size: 18px;
     transition: all 0.3s ease;
     backdrop-filter: blur(8px);
@@ -267,54 +266,53 @@ body {
 }
 
 #autocomplete-list {
-    list-style: none;
-    padding: 8px 0;
-    margin: 0;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.98);
-    border: none;
-    max-height: 350px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1000;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(8px);
-}
-
-#autocomplete-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-#autocomplete-list::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-#autocomplete-list::-webkit-scrollbar-thumb {
-    background: rgba(62, 169, 199, 0.3);
-    border-radius: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 60px; /* Adjusted to appear below the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  background: rgba(167, 214, 227, 0.15);
+  border: 2px solid rgba(62, 169, 199, 0.5);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(62, 169, 199, 0.2);
 }
 
 #autocomplete-list li {
-    padding: 12px 24px;
-    cursor: pointer;
-    color: #2C3E50;
-    transition: all 0.2s ease;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-#autocomplete-list li:not(:last-child) {
-    border-bottom: 1px solid rgba(62, 169, 199, 0.1);
+  padding: 12px 24px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
 }
 
 #autocomplete-list li:hover {
-    background-color: rgba(62, 169, 199, 0.1);
-    padding-left: 28px;
+  background-color: rgba(62, 169, 199, 0.3);
+  color: #ffffff;
+  padding-left: 28px;
+}
+
+#autocomplete-list li:not(:last-child) {
+  border-bottom: 1px solid rgba(62, 169, 199, 0.1);
+}
+
+#autocomplete-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#autocomplete-list::-webkit-scrollbar-thumb {
+  background: rgba(62, 169, 199, 0.3);
+  border-radius: 4px;
+}
+
+#autocomplete-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .status {
@@ -323,4 +321,9 @@ body {
 
 .fa-search{
   color: white;
+  width: 3px;
 }
+
+
+
+

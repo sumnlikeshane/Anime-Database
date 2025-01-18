@@ -11,23 +11,18 @@
     
     <div id="search-bar" style="margin: 20px; text-align: center; position: relative;">
         <i class="fas fa-search"></i>
-        <input type="text" id="search-input" placeholder=" Search for an anime.." style="padding: 5px;">
+        <input type="text" id="search-input" placeholder=" Search for an anime.." style="padding: 5px;" autocomplete="off">
       </div>
-    
-      
-    <div class="container" id = "anime-container"></div>
-    
 
+      <ul id="autocomplete-list"></ul>
+      
+     <div class="container" id = "anime-container"></div>
     
     <div id="pagination-controls" style="text-align: center; margin: 20px;">
-        <button id="prev-page" disabled>&lt;</button>
+        <button id="prev-page" disabled>&#10232;</button>
         <span id="page-numbers"></span>
-        <button id="next-page">&gt;</button>
+        <button id="next-page">&#10233;</button>
     </div>
-
-    
-    
-    
 </body>
 <script src = "script.js"></script>
 </html>
