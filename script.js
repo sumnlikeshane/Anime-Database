@@ -4,7 +4,9 @@ const nextButton = document.getElementById("next-page");
 const pageNumbersContainer = document.getElementById("page-numbers");
 const searchInput = document.getElementById("search-input");
 const autocompleteList = document.getElementById("autocomplete-list");
-const sortOptions = document.getElementById('sort-options');
+const sortBySelect = document.getElementById("sort-by-select");
+const toggleThemeButton = document.getElementById("toggle-theme-button");
+
 
 let currentPage = 1;
 let totalPages = 100;
@@ -257,19 +259,68 @@ document.addEventListener("click", (event) => {
   }
 });
 
-const sortAnime = (animeList, criteria) => {
-  switch (criteria) {
-      case 'popularity':
-          return animeList.sort((a, b) => a.popularity - b.popularity);
-      case 'rating':
-          return animeList.sort((a, b) => b.rating - a.rating);
-      case 'title':
-          return animeList.sort((a, b) => a.title.localeCompare(b.title));
-      default:
-          return animeList;
+sortBySelect.addEventListener("change", () => {
+  const sortBy = sortBySelect.value;
+  if (sortBy === "popularity") {
+    animeList.sort((a, b) => a.popularity - b.popularity);
+  } else if (sortBy === "rating") {
+    animeList.sort((a, b) => b.score - a.score);
+  } else if (sortBy === "new") {
+    animeList.sort((a, b) => {
+      const dateA = new Date(a.aired.from);
+      const dateB = new Date(b.aired.from);
+      if (isNaN(dateA)) return 1; // Handle invalid dates
+      if (isNaN(dateB)) return -1; // Handle invalid dates
+      return dateB - dateA;
+    });
   }
-};
+  displayAnime(animeList.slice(0, itemsPerPage));
+  updatePaginationControls();
+});
 
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  document.body.classList.add(savedTheme);
+  updateButtonText(savedTheme);
+}
+
+// Function to toggle between light and dark mode
+function toggleTheme() {
+  if (document.body.classList.contains("light-mode")) {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", ""); // Save preference
+    updateButtonText("");
+  } else {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light-mode"); // Save preference
+    updateButtonText("light-mode");
+  }
+}
+
+// Function to update button text based on the theme
+function updateButtonText(theme) {
+  toggleThemeButton.textContent = theme === "light-mode" ? "Switch to Dark Mode" : "Switch to Light Mode";
+}
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Set initial mode and icon
+let isDarkMode = true;
+document.documentElement.classList.add('dark-mode');
+themeToggleBtn.textContent = '☀️'; // Initial icon for dark mode
+
+themeToggleBtn.addEventListener('click', () => {
+  isDarkMode = !isDarkMode;
+
+  if (isDarkMode) {
+    document.documentElement.classList.add('dark-mode');
+    document.documentElement.classList.remove('light-mode');
+    themeToggleBtn.textContent = '☀️'; // Sun icon for dark mode
+  } else {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('dark-mode');
+    themeToggleBtn.textContent = '🌙'; // Moon icon for light mode
+  }
+});
 
 
 // Initial fetch

@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0 8px; /* Reduced left and right padding */
-    background: #111;
+    background: rgb(17, 18, 20);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,12 @@ body {
   }
   
   .card {
-    background-color: rgba(73, 77, 88, 0.35);
+    background: linear-gradient(
+      135deg, 
+      rgba(60, 63, 72, 0.7) 0%, 
+      rgba(49, 52, 59, 0.5) 40%, 
+      rgba(49, 52, 59, 0.2) 100%
+    );
     border-radius: 12px;
     padding: 8px;
     width: 341px;
@@ -29,6 +34,7 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    border: rgba(107, 125, 177, 0.35) 2px solid;
   }
   
   .card:hover {
@@ -207,7 +213,8 @@ body {
   
  
   #search-bar {
-    margin: 20px auto;
+    margin: 20px;
+    margin-right: 0;
     text-align: center;
     position: relative;
     display: flex;
@@ -216,6 +223,7 @@ body {
     gap: 16px;
     width: 1000px;
     padding: 0 20px;
+
 }
 
 #search-input {
@@ -229,6 +237,9 @@ body {
     font-size: 18px;
     transition: all 0.3s ease;
     backdrop-filter: blur(8px);
+
+    position: relative;
+    left:20px;
 }
 
 #search-input::placeholder {
@@ -239,20 +250,6 @@ body {
 #search-input:focus {
     border-color: rgba(62, 169, 199, 0.5);
   
-}
-
-#search-button {
-    padding: 16px 32px;
-    border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #3EA7C7 0%, #2980B9 100%);
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(62, 169, 199, 0.2);
-    white-space: nowrap;
 }
 
 #search-button:hover {
@@ -321,7 +318,10 @@ body {
 
 .fa-search{
   color: white;
-  width: 3px;
+  width: 8px;
+
+  position: relative;
+  left:0px;
 }
 
 .popup {
@@ -338,7 +338,12 @@ body {
 }
 
 .popup-content {
-  background-color: rgba(39, 42, 48, 0.95);
+  background: linear-gradient(
+      135deg, 
+      rgba(57, 60, 68, 0.95) 0%, 
+      rgb(42, 45, 50) 40%, 
+      rgb(31, 33, 37) 100%
+    );
   color: white;
   padding: 20px;
   border-radius: 12px;
@@ -410,6 +415,120 @@ body {
 #close-popup:hover {
   background-color: rgba(62, 169, 199, 1);
   box-shadow: 0 0 15px rgba(62, 169, 199, 0.5);
+}
+
+#sort-by {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  left: 100px;
+  top:1.5px;
+}
+#sort-by-select{
+  background-color: rgba(167, 214, 227, 0.15);
+  color: #95A5A6;
+  font-size: 16px;
+  height: 35px;
+  border:0px;
+  border-radius: 4px;
+}
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  
+}
+
+:root {
+  --bg-color: rgb(17, 18, 20);
+  --text-color: rgb(0, 0, 0);
+  --card-bg: rgba(60, 63, 72, 0.7);
+  --border-color: rgba(107, 125, 177, 0.35);
+}
+
+.light-mode {
+  --bg-color: rgba(100, 253, 253, 0.35);
+  --text-color: #050505;
+  --card-bg: rgba(69, 190, 242, 0.669);
+  --border-color: #dddddd;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.light-mode .popup-content{
+  background-color: linear-gradient(
+    135deg, 
+    rgba(113, 211, 253, 0.8) 0%, 
+    rgba(55, 195, 255, 0.6) 50%, 
+    rgba(0, 179, 255, 0.4) 100%
+  );;
+}
+.light-mode .card {
+  background: linear-gradient(
+    135deg, 
+    rgba(113, 211, 253, 0.8) 0%, 
+    rgba(55, 195, 255, 0.6) 50%, 
+    rgba(0, 179, 255, 0.4) 100%
+  );
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.light-mode .fa-search,
+.light-mode #search-input::placeholder,
+.light-mode #search-input,
+.light-mode #sort-by-select,
+.light-mode .card-title,
+.light-mode .card-subtitle,
+.light-mode .card-description,
+.light-mode .card-rating,
+.light-mode .tags,
+.light-mode .tag,
+.light-mode #sort-by-select {
+  color: #050505;
+}
+
+.light-mode .card-description {
+  color: #101010;
+}
+
+.light-mode .tag {
+  background-color: #cfcfcf;
+}
+
+.light-mode #search-input,
+.light-mode #sort-by-select {
+  background-color: rgba(1, 200, 255, 0.366);
+}
+
+#autocomplete-list {
+  background-color: var(--card-bg);
+}
+
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
 }
 
 
