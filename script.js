@@ -40,6 +40,7 @@ function mapRating(rating) {
 // Display anime in the container
 function displayAnime(animeList) {
   container.innerHTML = ""; // Clear the container for new data
+
   animeList.forEach((anime) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -74,7 +75,7 @@ function displayAnime(animeList) {
         <div class="card-description">${anime.synopsis || 'No description available'}</div>
         <div class="card-rating">
           <span class="star">&#9733; ${anime.score || 'N/A'}</span>
-          <span class="rating-value">${anime.scored_by > 0 ? anime.scored_by : 'No ratings yet'}  ratings</span>
+          <span class="rating-value">${anime.scored_by > 0 ? anime.scored_by : 'No ratings yet'} ratings</span>
         </div>
         <div class="tags">
           ${anime.genres ? anime.genres.map(tag => `<span class="tag">${tag.name}</span>`).join('') : ''}
@@ -82,25 +83,41 @@ function displayAnime(animeList) {
       </div>
     `;
 
-    
+    // Add click event to open the popup
+    card.addEventListener("click", () => openPopup(anime));
 
-    container.appendChild(card);
+    container.appendChild(card);  // Append to container
   });
 }
 
-// Example: Assuming you have a function that creates the title cards
-function createAnimeCard(anime) {
-  const card = document.createElement('div');
-  card.classList.add('anime-card');
-  card.innerHTML = `
-      <img src="${anime.image_url}" alt="${anime.title}">
-      <h3>${anime.title}</h3>
-  `;
-  card.addEventListener('click', () => openModal(anime.mal_id)); // Assuming mal_id is the unique ID for each anime
+function openPopup(anime) {
+  const popup = document.getElementById("popup");
+  const popupTitle = document.getElementById("popup-title");
+  const popupImage = document.getElementById("popup-image");
+  const popupDescription = document.getElementById("popup-description");
+  const popupStatus = document.getElementById("popup-status");
+  const popupRating = document.getElementById("popup-rating");
+  const popupEpisodes = document.getElementById("popup-episodes");
+  const popupGenres = document.getElementById("popup-genres");
 
-  // Append to the container (example)
-  document.getElementById('anime-container').appendChild(card);
+  // Set the popup content
+  popupTitle.textContent = anime.title;
+  popupImage.src = anime.images.jpg.image_url;
+  popupDescription.textContent = anime.synopsis;
+  popupStatus.textContent = `Status: ${anime.status}`;
+  popupRating.textContent = `Rating: ${anime.rating}`;
+  popupEpisodes.textContent = `Episodes: ${anime.episodes}`;
+  popupGenres.innerHTML = `Genres: ${anime.genres ? anime.genres.map(tag => `<span class="tag">${tag.name}</span>`).join('') : 'N/A'}`;
+
+  // Display the popup
+  popup.style.display = "flex";
 }
+
+// Close the popup
+document.getElementById("close-popup").addEventListener("click", () => {
+  document.getElementById("popup").style.display = "none";
+});
+
 
 
 // Update pagination controls dynamically
@@ -252,6 +269,8 @@ const sortAnime = (animeList, criteria) => {
           return animeList;
   }
 };
+
+
 
 // Initial fetch
 fetchAnime(currentPage);
