@@ -3,7 +3,6 @@ const prevButton = document.getElementById("prev-page");
 const nextButton = document.getElementById("next-page");
 const pageNumbersContainer = document.getElementById("page-numbers");
 const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-button");
 const autocompleteList = document.getElementById("autocomplete-list");
 
 let currentPage = 1;
@@ -51,7 +50,7 @@ function displayAnime(animeList) {
     } else if (anime.status === "Finished Airing") {
       statusColor = "grey";
     } else if (anime.status === "Not yet aired") {
-      statusColor = "golden";
+      statusColor = "gold"; // Corrected to "gold"
     } else {
       statusColor = "grey"; // Default color
     }
@@ -161,14 +160,6 @@ function searchAnime(query) {
     })
     .catch((error) => console.error("Error fetching search results:", error));
 }
-
-// Event listener for the search button
-searchButton.addEventListener("click", () => {
-  const query = searchInput.value.trim();
-  if (query) {
-    searchAnime(query);
-  }
-});
 
 // Optional: Trigger search on pressing Enter in the input
 searchInput.addEventListener("keypress", (event) => {
