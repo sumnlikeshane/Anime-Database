@@ -503,7 +503,7 @@ nav{
 .light-mode #search-input,.light-mode .tag {
   background-color: rgba(199, 215, 255, 0.59);
   color:rgb(14, 14, 16) ;
-  border: 2px solid rgba(128, 161, 170, 0.5);
+  border: rgba(107, 125, 177, 0.35) 2px solid;
 }
 .light-mode #search-input::placeholder{
   color:rgb(14, 14, 16);
@@ -512,7 +512,7 @@ nav{
 .light-mode #sort-by-select{
   background-color: rgba(199, 215, 255, 0.59);
   color:rgb(14, 14, 16) ;
-  border: 2px solid rgba(128, 161, 170, 0.5);
+  border: rgba(107, 125, 177, 0.35) 2px solid;
 }
 .light-mode .fa-search{
   color: rgb(14, 14, 16);
