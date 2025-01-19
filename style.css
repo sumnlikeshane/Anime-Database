@@ -223,6 +223,7 @@ body {
     gap: 16px;
     width: 1000px;
     padding: 0 20px;
+    
 
 }
 
@@ -237,6 +238,8 @@ body {
     font-size: 18px;
     transition: all 0.3s ease;
     backdrop-filter: blur(8px);
+
+    border: rgba(107, 125, 177, 0.35) 2px solid;
 
     position: relative;
     left:20px;
@@ -321,7 +324,8 @@ body {
   width: 8px;
 
   position: relative;
-  left:0px;
+  top: 1.5px;
+  left:16px;
 }
 
 .popup {
@@ -432,6 +436,7 @@ body {
   height: 35px;
   border:0px;
   border-radius: 4px;
+  border: rgba(107, 125, 177, 0.35) 2px solid;
 }
 nav{
   display: flex;
@@ -456,81 +461,93 @@ nav{
   --border-color: #dddddd;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+.light-mode body{
+  background-color: #eeeeee;
 }
-.light-mode .popup-content{
-  background-color: linear-gradient(
-    135deg, 
-    rgba(113, 211, 253, 0.8) 0%, 
-    rgba(55, 195, 255, 0.6) 50%, 
-    rgba(0, 179, 255, 0.4) 100%
-  );;
-}
-.light-mode .card {
+
+.light-mode .card,.light-mode .popup-content{
   background: linear-gradient(
-    135deg, 
-    rgba(113, 211, 253, 0.8) 0%, 
-    rgba(55, 195, 255, 0.6) 50%, 
-    rgba(0, 179, 255, 0.4) 100%
-  );
-  border: 1px solid var(--border-color);
+      135deg, 
+      rgb(237, 242, 255) 0%, 
+      rgb(221, 231, 255) 40%, 
+      rgb(181, 202, 255) 100%
+    );
+}
+.light-mode.card-title, .light-mode.card-subtitle,.light-mode .card-rating, .light-mode.tags, .light-mode.tag ,.light-mode .tag,.light-mode .age-rating,.light-mode .card-title,.light-mode .status.light-mode .popup-age-rating,.light-mode .popup-content-details,.light-mode .popup-title,.light-mode .popup-status,.light-mode .popup-age-rating,.light-mode .popup-aired,.light-mode .popup-episodes,.light-mode .popup-description,.light-mode .popup-rating,.light-mode .popup-tags,.light-mode .status{
   color: var(--text-color);
-  transition: transform 0.2s ease;
 }
 
-.card:hover {
-  transform: scale(1.01);
+.light-mode .card-description,.light-mode .card-subtitle{
+  color: #0505058e;
 }
 
-.light-mode .fa-search,
-.light-mode #search-input::placeholder,
-.light-mode #search-input,
-.light-mode #sort-by-select,
-.light-mode .card-title,
-.light-mode .card-subtitle,
-.light-mode .card-description,
-.light-mode .card-rating,
-.light-mode .tags,
-.light-mode .tag,
-.light-mode #sort-by-select {
+
+.light-mode .star{
+  color: #ffaa00;
+}
+
+.light-mode #autocomplete-list li{
+  background-color:rgba(199, 215, 255, 0.59) ;
   color: #050505;
 }
 
-.light-mode .card-description {
-  color: #101010;
+.light-mode #autocomplete-list{
+    border: 2px solid rgba(128, 161, 170, 0.5);
+  }
+
+.light-mode #autocomplete-list li:hover{
+  background-color: rgba(76, 207, 243, 0.3);
+  color: #050505;
 }
 
-.light-mode .tag {
-  background-color: #cfcfcf;
+.light-mode #search-input,.light-mode .tag {
+  background-color: rgba(199, 215, 255, 0.59);
+  color:rgb(14, 14, 16) ;
+  border: 2px solid rgba(128, 161, 170, 0.5);
 }
-
-.light-mode #search-input,
-.light-mode #sort-by-select {
-  background-color: rgba(1, 200, 255, 0.366);
+.light-mode #search-input::placeholder{
+  color:rgb(14, 14, 16);
+  
 }
+.light-mode #sort-by-select{
+  background-color: rgba(199, 215, 255, 0.59);
+  color:rgb(14, 14, 16) ;
+  border: 2px solid rgba(128, 161, 170, 0.5);
+}
+.light-mode .fa-search{
+  color: rgb(14, 14, 16);
+} 
 
 #autocomplete-list {
   background-color: var(--card-bg);
 }
 
 
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+#theme-toggle {
+  position: relative;
+  top: 3px;
+  background-color:rgba(167, 214, 227, 0.15); 
+  border-radius: 8px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: transform 0.2s ease;
+  padding: 4px 6.5px;
+  border: rgba(107, 125, 177, 0.35) 2px solid;
 }
 
-.theme-toggle:hover {
+#theme-toggle:hover {
   transform: scale(1.2);
+  background-color: rgba(217, 246, 254, 0.15);/* Darker background color on hover */
 }
 
+.light-mode #theme-toggle {
+  background-color: rgba(199, 215, 255, 0.9); /* Light mode background color */
+  color: rgb(14, 14, 16);
+}
+
+.light-mode #theme-toggle:hover {
+  background-color: rgba(199, 215, 255, 1); 
+}
 
 
 
