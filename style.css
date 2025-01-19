@@ -271,7 +271,7 @@ body {
   padding: 0;
   position: absolute;
   top: 60px; /* Adjusted to appear below the search bar */
-  left: 50%;
+  left: 50.5%;
   transform: translateX(-50%);
   width: 800px;
   background: rgba(167, 214, 227, 0.15);
