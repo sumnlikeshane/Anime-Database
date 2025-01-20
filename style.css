@@ -211,7 +211,6 @@ body {
     background-color: rgba(62, 169, 199, 0.9);
   }
   
- 
   #search-bar {
     margin: 20px;
     margin-right: 0;
@@ -221,8 +220,9 @@ body {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    width: 1000px;
+    width: 100%;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 
@@ -268,9 +268,10 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  position: relative;
-  bottom:28px;
-  left: 24.5%;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  right: 0;
   transform: translateX(-50%);
   width: calc(100% - 40px); /* Match search input width while maintaining margins */
   max-width: 800px;
@@ -278,7 +279,7 @@ body {
   border: 2px solid rgba(62, 169, 199, 0.5);
   border-radius: 16px;
   backdrop-filter: blur(8px);
-  z-index: 1000;
+  z-index: 9999;
   display: none;
   max-height: 300px;
   overflow-y: auto;
@@ -438,16 +439,6 @@ body {
   border:0px;
   border-radius: 4px;
   border: rgba(107, 125, 177, 0.35) 2px solid;
-  position: relative;
-  left: 100px;
-}
-nav{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  
 }
 
 #theme-toggle {
@@ -654,20 +645,14 @@ body {
   flex-direction: column;
 }
 
-@media (min-width: 768px) {
-  .popup-content {
-      flex-direction: row;
-  }
-}
-
-/* Navigation responsiveness */
 nav {
   width: 100%;
   padding: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+  flex-wrap: nowrap;
 }
 
 /* Sort by select responsiveness */
@@ -679,8 +664,6 @@ nav {
 
 #sort-by-select {
   padding: 8px;
-  position: relative;
-  right: 100px;
 }
 
 /* Pagination controls responsiveness */
@@ -693,147 +676,182 @@ nav {
   justify-content: center;
   gap: 10px;
 }
-
-@media screen and (max-width: 1024px) {
-  #search-bar {
-      padding: 0 15px;
-  }
-  
-  #sort-by {
-      margin-left: 0;
+@media screen and (min-width: 1024px) and (max-width: 1143px) {
+  nav {
+    gap: 1vw;
   }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 1024px) and (max-width: 1333px) {
+  nav {
+    justify-content: space-between;
+    gap: 1.5vw;
+  }
+
   #search-bar {
-        max-width: 90%;
-        margin: 10px;
-        padding: 0 10px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+  }
 
-    #search-input {
-        padding: 12px 20px 12px 35px;
-        font-size: 16px;
-        min-width: 200px;
-    }
+  #search-input {
+    flex-grow: 1;
+    width: auto;
+    font-size: 15px;
+    padding: 8px 10px;
+  }
 
-    .fa-search {
-        left: 20px;
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-    }
+  #sorting-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 
+  #theme-toggle {
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  nav {
+    justify-content: space-between;
+    gap: 1vw;
+  }
+
+  #search-bar {
+    max-width: 600px;
+  }
+
+  #search-input {
+    max-width: 400px;
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  #sorting-button {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  #theme-toggle {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    gap: 0.5vw;
+  }
+
+  #search-bar {
+    flex-direction: column;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  #search-input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  #sorting-button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .fa-search {
+    left: 20px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
 
   .card {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
   }
 
   .image-container {
-      width: 100%;
-      max-width: 200px;
-      height: 250px;
+    width: 100%;
+    max-width: 200px;
+    height: 250px;
   }
 
   .card-content {
-      width: 100%;
+    width: 100%;
   }
 
   .card-description {
-      width: 100%;
-      max-height: none;
+    width: 100%;
+    max-height: none;
   }
 
   .tags {
-      justify-content: center;
+    justify-content: center;
   }
 
-  #search-bar {
-     width: 100%;
-      flex-direction: column;
-      align-items: center;
+
+  #theme-toggle {
+    margin: 10px 0;
   }
-
-  #autocomplete-list {
-    width: calc(100% - 20px);
-    top: 50px; /* Adjust based on smaller search input */
-    max-height: 250px;
-    font-size: 14px;
-}
-
-#autocomplete-list li {
-    padding: 10px 16px;
-}
-
-#autocomplete-list li:hover {
-    padding-left: 20px;
-}
-#theme-toggle {
-  margin: 10px 0;
-}
 }
 
 @media screen and (max-width: 480px) {
+  nav {
+    gap: 0.5vw;
+  }
+
+  #search-bar {
+    max-width: 400px;
+    gap: 5px;
+  }
+
+  #search-input {
+    max-width: 250px;
+    font-size: 12px;
+    padding: 5px 7px;
+  }
+
   .container {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   .fa-search {
     left: 15px;
-}
-
-#search-input {
-  font-size: 14px;
-  padding: 10px 15px 10px 30px;
-}
+  }
 
   .card-title {
-      font-size: 16px;
+    font-size: 16px;
   }
 
   .card-subtitle,
   .card-description {
-      font-size: 12px;
+    font-size: 12px;
   }
-  #autocomplete-list {
-    width: calc(100% - 16px);
-    top: 45px;
-    max-height: 250px;
-    font-size: 13px;
-}
 
-#autocomplete-list li {
-    padding: 8px 12px;
-    font-size: 14px;
-}
 
-#autocomplete-list li:hover {
-    padding-left: 16px;
-}
-}
+
   .tag {
-      font-size: 10px;
-      padding: 3px 8px;
+    font-size: 10px;
+    padding: 3px 8px;
   }
+
   #toggle-label {
     position: relative;
     left: 5px;
   }
-
-
-/* Theme toggle responsiveness */
-
-
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  #theme-toggle,
-  #search-input,
-  #pagination-controls button {
-      transition: none;
-  }
 }
-
-
-
