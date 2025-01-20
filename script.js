@@ -322,7 +322,5 @@ themeToggleBtn.addEventListener('click', () => {
   }
 });
 
-
-// Initial fetch
 fetchAnime(currentPage);
 
