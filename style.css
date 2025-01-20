@@ -270,7 +270,7 @@ body {
   padding: 0;
   position: absolute;
   top: 100%; 
-  width: 100%;
+  width: 85%;
   max-width: none; /* Disable max-width for now */
   background: rgba(167, 214, 227, 0.15);
   border: 2px solid rgba(62, 169, 199, 0.5);
@@ -282,6 +282,7 @@ body {
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(62, 169, 199, 0.2);
   box-sizing: border-box;
+  right: 30px;
 }
 
 #autocomplete-list li {
@@ -445,7 +446,7 @@ body {
   border-radius: 8px;
   font-size: 1rem;
   position: relative;
-  left: 29px;
+  left: 70px;
 }
 
 :root {
@@ -807,7 +808,6 @@ nav {
   nav {
     gap: 0.5vw;
   }
-
   #search-bar {
     max-width: 400px;
     gap: 5px;
