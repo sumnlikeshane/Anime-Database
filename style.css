@@ -270,7 +270,7 @@ body {
   padding: 0;
   position: absolute;
   top: 100%; 
-  width: 85%;
+  
   max-width: none; /* Disable max-width for now */
   background: rgba(167, 214, 227, 0.15);
   border: 2px solid rgba(62, 169, 199, 0.5);
@@ -282,7 +282,9 @@ body {
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(62, 169, 199, 0.2);
   box-sizing: border-box;
-  right: 30px;
+
+  width: 80%;
+  right: 66px;
 }
 
 #autocomplete-list li {
@@ -709,6 +711,11 @@ nav {
   #theme-toggle {
     margin: 0 10px;
   }
+
+  #autocomplete-list {
+    width: 90%;
+    right: 13px;
+  }
 }
 
 @media screen and (max-width: 1024px) and (min-width: 768px) {
@@ -734,6 +741,11 @@ nav {
 
   #theme-toggle {
     font-size: 14px;
+  }
+
+  #autocomplete-list {
+    width: 69%;
+    right: 62px;
   }
 }
 
@@ -802,6 +814,11 @@ nav {
   #theme-toggle {
     margin: 10px 0;
   }
+
+  #autocomplete-list {
+    width: 90%;
+    left: 48px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -809,12 +826,12 @@ nav {
     gap: 0.5vw;
   }
   #search-bar {
-    max-width: 400px;
-    gap: 5px;
+    max-width: 300px;
+    gap: 10px;
   }
 
   #search-input {
-    max-width: 250px;
+    max-width: 200px;
     font-size: 12px;
     padding: 5px 7px;
   }
@@ -843,7 +860,7 @@ nav {
 
   #toggle-label {
     position: relative;
-    left: 5px;
+    right: 10px;
   }
 }
 
