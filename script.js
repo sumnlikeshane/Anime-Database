@@ -322,5 +322,16 @@ themeToggleBtn.addEventListener('click', () => {
   }
 });
 
+searchInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (query) {
+      searchAnime(query); // Perform the search if the query is not empty
+    } else {
+      fetchAnime(1); // Redirect back to the home view (page 1) if the input is empty
+    }
+  }
+});
+
 fetchAnime(currentPage);
 
