@@ -10,38 +10,38 @@ const toggleThemeButton = document.getElementById("toggle-theme-button");
 
 let currentPage = 1;
 let totalPages = 100;
-let animeList = []; // Store the fetched anime data
-const itemsPerPage = 24; // Adjust this value based on the number of items you want per page
+let animeList = []; // stores the fetched anime data
+const itemsPerPage = 24; // max number of pages
 
-// Fetch anime data for a given page
+//fetching the naime data
 function fetchAnime(page) {
-  container.innerHTML = ""; // Clear the container for new data
-  currentPage = page; // Update currentPage to reflect the correct page
+  container.innerHTML = ""; // clear the container for the next data
+  currentPage = page; //updating
   fetch(`https://api.jikan.moe/v4/anime?page=${page}&limit=${itemsPerPage}`)
     .then((response) => response.json())
     .then((data) => {
-      animeList = data.data; // Store the fetched anime data
+      animeList = data.data; //storing the data
       totalPages = data.pagination.last_visible_page || 100;
-      displayAnime(animeList); // Display the fetched anime data
-      updatePaginationControls(); // Update pagination controls after data is loaded
+      displayAnime(animeList); //displaying the data
+      updatePaginationControls(); //paginations
     })
     .catch((error) => console.error("Error fetching data:", error));
 }
 
-// Function to map ratings to "PG", "A", or "R"
+// maping the ratings properly
 function mapRating(rating) {
   if (rating.includes("PG")) {
     return "PG";
   } else if (rating.includes("R")) {
     return "R";
   } else {
-    return "A"; // Default to "A" if not "PG" or "R"
+    return "A"; 
   }
 }
 
-// Display anime in the container
+//displaying the anime data
 function displayAnime(animeList) {
-  container.innerHTML = ""; // Clear the container for new data
+  container.innerHTML = ""; 
 
   animeList.forEach((anime) => {
     const card = document.createElement("div");
@@ -54,12 +54,12 @@ function displayAnime(animeList) {
     } else if (anime.status === "Finished Airing") {
       statusColor = "grey";
     } else if (anime.status === "Not yet aired") {
-      statusColor = "gold"; // Corrected to "gold"
+      statusColor = "gold"; 
     } else {
-      statusColor = "grey"; // Default color
+      statusColor = "grey"; // default
     }
 
-    // Map the rating to "PG", "A", or "R"
+  
     const ageRating = anime.rating ? mapRating(anime.rating) : 'N/A';
 
     card.innerHTML = `
@@ -85,10 +85,10 @@ function displayAnime(animeList) {
       </div>
     `;
 
-    // Add click event to open the popup
+    // click event for the card
     card.addEventListener("click", () => openPopup(anime));
 
-    container.appendChild(card);  // Append to container
+    container.appendChild(card); //appending the card to the container
   });
 }
 
@@ -102,7 +102,7 @@ function openPopup(anime) {
   const popupEpisodes = document.getElementById("popup-episodes");
   const popupGenres = document.getElementById("popup-genres");
 
-  // Set the popup content
+  //popup content
   popupTitle.textContent = anime.title;
   popupImage.src = anime.images.jpg.image_url;
   popupDescription.textContent = anime.synopsis;
@@ -111,25 +111,25 @@ function openPopup(anime) {
   popupEpisodes.textContent = `Episodes: ${anime.episodes}`;
   popupGenres.innerHTML = `Genres: ${anime.genres ? anime.genres.map(tag => `<span class="tag">${tag.name}</span>`).join('') : 'N/A'}`;
 
-  // Display the popup
+  //diaply 
   popup.style.display = "flex";
 }
 
-// Close the popup
+///close
 document.getElementById("close-popup").addEventListener("click", () => {
   document.getElementById("popup").style.display = "none";
 });
 
 
 
-// Update pagination controls dynamically
+// update pagination controls dynamically
 function updatePaginationControls() {
-  pageNumbersContainer.innerHTML = ""; // Clear existing buttons
+  pageNumbersContainer.innerHTML = ""; // clear existing buttons
 
-  const maxVisiblePages = 5; // Number of visible pages before the ellipsis
+  const maxVisiblePages = 5; // setting the number of ellipses
   const halfVisiblePages = Math.floor(maxVisiblePages / 2);
 
-  // Add the first page
+  //fist page
   addPageButton(1);
 
   if (currentPage > halfVisiblePages + 2) {
@@ -151,7 +151,7 @@ function updatePaginationControls() {
     pageNumbersContainer.appendChild(ellipsis);
   }
 
-  // Add the last page
+  // last page
   if (totalPages > 1) {
     addPageButton(totalPages);
   }
@@ -185,22 +185,21 @@ function addPageButton(pageNumber) {
   pageNumbersContainer.appendChild(pageButton);
 }
 
-// Search anime based on query
+// search anime function
 function searchAnime(query) {
-  container.innerHTML = ""; // Clear the container for new data
+  container.innerHTML = ""; //clear
   fetch(`https://api.jikan.moe/v4/anime?q=${query}&limit=${itemsPerPage}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.data.length === 0) {
         container.innerHTML = "<p>No anime found. Try another search!</p>";
       } else {
-        displayAnime(data.data); // Use the same displayAnime function
+        displayAnime(data.data); //diaply
       }
     })
     .catch((error) => console.error("Error fetching search results:", error));
 }
 
-// Optional: Trigger search on pressing Enter in the input
 searchInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     const query = searchInput.value.trim();
@@ -213,7 +212,7 @@ searchInput.addEventListener("keypress", (event) => {
 
 function fetchSuggestions(query) {
   if (!query) {
-      autocompleteList.style.display = "none"; // Hide the list if the query is empty
+      autocompleteList.style.display = "none"; 
       return;
   }
 
@@ -226,33 +225,30 @@ function fetchSuggestions(query) {
       .catch((error) => console.error("Error fetching suggestions:", error));
 }
 
-// Show the autocomplete suggestions
+// autocomplete suggestions
 function showSuggestions(suggestions) {
-  autocompleteList.innerHTML = ""; // Clear existing suggestions
-  autocompleteList.style.display = suggestions.length ? "block" : "none"; // Show if suggestions exist
+  autocompleteList.innerHTML = ""; // Clear 
+  autocompleteList.style.display = suggestions.length ? "block" : "none"; 
 
   suggestions.forEach((suggestion) => {
       const listItem = document.createElement("li");
       listItem.textContent = suggestion;
 
-      // Populate search bar and trigger search on click
       listItem.addEventListener("click", () => {
-          searchInput.value = suggestion; // Set the search input
-          autocompleteList.style.display = "none"; // Hide the suggestions
-          searchAnime(suggestion); // Perform the search
+          searchInput.value = suggestion; 
+          autocompleteList.style.display = "none"; 
+          searchAnime(suggestion); 
       });
 
       autocompleteList.appendChild(listItem);
   });
 }
 
-// Listen to input events for autocomplete
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
   fetchSuggestions(query);
 });
 
-// Hide autocomplete when clicking outside
 document.addEventListener("click", (event) => {
   if (!event.target.closest("#search-bar")) {
       autocompleteList.style.display = "none";
@@ -269,8 +265,8 @@ sortBySelect.addEventListener("change", () => {
     animeList.sort((a, b) => {
       const dateA = new Date(a.aired.from);
       const dateB = new Date(b.aired.from);
-      if (isNaN(dateA)) return 1; // Handle invalid dates
-      if (isNaN(dateB)) return -1; // Handle invalid dates
+      if (isNaN(dateA)) return 1;
+      if (isNaN(dateB)) return -1; // handles invalid dates
       return dateB - dateA;
     });
   }
@@ -284,20 +280,19 @@ if (savedTheme) {
   updateButtonText(savedTheme);
 }
 
-// Function to toggle between light and dark mode
+// light and dark mode
 function toggleTheme() {
   if (document.body.classList.contains("light-mode")) {
     document.body.classList.remove("light-mode");
-    localStorage.setItem("theme", ""); // Save preference
+    localStorage.setItem("theme", ""); 
     updateButtonText("");
   } else {
     document.body.classList.add("light-mode");
-    localStorage.setItem("theme", "light-mode"); // Save preference
+    localStorage.setItem("theme", "light-mode"); 
     updateButtonText("light-mode");
   }
 }
 
-// Function to update button text based on the theme
 function updateButtonText(theme) {
   toggleThemeButton.textContent = theme === "light-mode" ? "Switch to Dark Mode" : "Switch to Light Mode";
 }
@@ -306,7 +301,7 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 // Set initial mode and icon
 let isDarkMode = true;
 document.documentElement.classList.add('dark-mode');
-themeToggleBtn.textContent = '☀️'; // Initial icon for dark mode
+themeToggleBtn.textContent = '☀️'; 
 
 themeToggleBtn.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
@@ -314,11 +309,11 @@ themeToggleBtn.addEventListener('click', () => {
   if (isDarkMode) {
     document.documentElement.classList.add('dark-mode');
     document.documentElement.classList.remove('light-mode');
-    themeToggleBtn.textContent = '☀️'; // Sun icon for dark mode
+    themeToggleBtn.textContent = '☀️'; 
   } else {
     document.documentElement.classList.add('light-mode');
     document.documentElement.classList.remove('dark-mode');
-    themeToggleBtn.textContent = '🌙'; // Moon icon for light mode
+    themeToggleBtn.textContent = '🌙'; 
   }
 });
 
@@ -326,9 +321,9 @@ searchInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     const query = searchInput.value.trim();
     if (query) {
-      searchAnime(query); // Perform the search if the query is not empty
+      searchAnime(query); 
     } else {
-      fetchAnime(1); // Redirect back to the home view (page 1) if the input is empty
+      fetchAnime(1); // redirect back to the home view (page 1) if the input is empty
     }
   }
 });
