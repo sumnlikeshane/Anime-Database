@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0 8px; /* Reduced left and right padding */
+  padding: 0 8px; 
   background: rgb(17, 18, 20);
   display: flex;
   flex-direction: column;
@@ -12,9 +12,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  padding: 8px; /* Reduced padding for the container */
-  max-width: 100%; /* Ensures no overflow */
-  box-sizing: border-box; /* Maintain consistent padding behavior */
+  padding: 8px; 
+  max-width: 100%; 
+  box-sizing: border-box; 
 }
 
 .card {
@@ -174,7 +174,7 @@ body {
     padding: 10px 20px;
     margin: 20px;
     border-radius: 20px;
-    backdrop-filter: blur(10px); /* Glass effect */
+    backdrop-filter: blur(10px);
   }
   
   #pagination-controls button {
@@ -271,7 +271,7 @@ body {
   position: absolute;
   top: 100%; 
   
-  max-width: none; /* Disable max-width for now */
+  max-width: none; 
   background: rgba(167, 214, 227, 0.15);
   border: 2px solid rgba(62, 169, 199, 0.5);
   border-radius: 16px;
@@ -292,7 +292,7 @@ body {
   cursor: pointer;
   color: #ffffff;
   transition: background-color 0.2s ease, padding-left 0.2s ease;
-  white-space: normal; /* Allow text to wrap */
+  white-space: normal; 
   word-wrap: break-word;
   line-height: 1.4;
 }
@@ -413,7 +413,7 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  background-color: rgba(62, 169, 199, 0.9); /* Make the button opaque */
+  background-color: rgba(62, 169, 199, 0.9);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -540,11 +540,11 @@ body {
 
 #theme-toggle:hover {
   transform: scale(1.2);
-  background-color: rgba(217, 246, 254, 0.15);/* Darker background color on hover */
+  background-color: rgba(217, 246, 254, 0.15);
 }
 
 .light-mode #theme-toggle {
-  background-color: rgba(199, 215, 255, 0.9); /* Light mode background color */
+  background-color: rgba(199, 215, 255, 0.9); 
   color: rgb(14, 14, 16);
 }
 
@@ -552,7 +552,6 @@ body {
   background-color: rgba(199, 215, 255, 1); 
 }
 
-/* Base styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -564,7 +563,6 @@ body {
   min-height: 100vh;
 }
 
-/* Container responsiveness */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -575,7 +573,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Card responsiveness */
 .card {
   background: linear-gradient(
       135deg, 
@@ -595,7 +592,6 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* Image container responsiveness */
 .image-container {
   flex: 0 0 120px;
   height: 200px;
@@ -612,7 +608,6 @@ body {
   border-radius: 10px;
 }
 
-/* Search bar responsiveness */
 #search-bar {
   margin: 20px;
   width: 100%;
@@ -917,8 +912,6 @@ nav {
   }
 }
 
-/* Extra small screens (480px and below) */
-/* Base navigation styles */
 nav {
   width: 100%;
   padding: 10px 20px;
@@ -948,7 +941,6 @@ nav {
   }
 }
 
-/* Medium screens (800px to 1023px) */
 @media screen and (min-width: 800px) and (max-width: 1023px) {
   nav {
     padding: 10px;
@@ -964,7 +956,6 @@ nav {
   }
 }
 
-/* Small screens (799px and below) */
 @media screen and (max-width: 799px) {
   nav {
     flex-direction: column;
@@ -1014,7 +1005,6 @@ nav {
   }
 }
 
-/* Extra small screens (480px and below) */
 @media screen and (max-width: 480px) {
   nav {
     padding: 5px;
